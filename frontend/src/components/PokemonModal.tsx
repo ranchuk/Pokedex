@@ -8,7 +8,7 @@ import ModalComponent from '../common-components/ModalComponent';
 interface PokemonModalProps {
   isOpen: boolean;
   pokemon: Pokemon; // You might want to define a more specific type
-  handleClose: (e: any) => void
+  handleClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   handleCapture: (pokemon_name: string) => void
   isLoading: boolean
 

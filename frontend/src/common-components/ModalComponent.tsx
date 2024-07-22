@@ -1,9 +1,9 @@
 import React from 'react'
-import { Modal, Box, Card, CardContent, Typography, Button } from '@mui/material';
+import { Modal, Box } from '@mui/material';
 
 interface ModalComponentProps {
   isOpen: boolean;
-  handleClose: (e: any) => void
+  handleClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   children: React.ReactNode;
 }
 

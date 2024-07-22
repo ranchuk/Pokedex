@@ -19,8 +19,6 @@ export default function PageSizer({ pageSize, onPageSizeChange }: PageSizerProps
 
       
   return (
-    <div>
-              {/* Page Size Selector */}
       <FormControl sx={{ minWidth: 120 }}>
         <InputLabel id="page-size-select-label">Page Size</InputLabel>
         <Select
@@ -35,6 +33,5 @@ export default function PageSizer({ pageSize, onPageSizeChange }: PageSizerProps
           ))}
         </Select>
       </FormControl>
-    </div>
   )
 }

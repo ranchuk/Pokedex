@@ -10,7 +10,7 @@ import { useCallback } from 'react';
 interface PokemonItemProps {
   itemData: Pokemon;
   handleCapture: (pokemon_name: string) => void
-  handleShowMore: (pokemonData: any) => void
+  handleShowMore: (pokemonData: Pokemon) => void
 
 }
 
@@ -22,27 +22,20 @@ export default function PokemonItem(props: PokemonItemProps) {
     attack,
     defense,
     generation,
-    hit_points,
-    legendary,
     name,
     number,
-    special_attack,
-    special_defense,
-    speed,
-    total,
     type_one,
-    type_two,
     icon_url,
     captured
   } } = props;
 
-  const onShowMore = useCallback(() => {
+  const onShowMore = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     handleShowMore(props.itemData)
-  }, [props.itemData])
+  }
 
   return (
-    <Card sx={{ borderRadius: '12px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}>
-      <CardContent>
+    <Card sx={{ borderRadius: '12px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' , height: '100%'}}>
+      <CardContent sx={{height: '100%'}}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Box sx={{ flex: 1 }}>
             <Typography sx={{ fontSize: 16, fontWeight: 'bold', mb: 1 }} color="text.primary" gutterBottom>
@@ -66,6 +59,7 @@ export default function PokemonItem(props: PokemonItemProps) {
 
             <Button
                   onClick={() => handleCapture(name)}
+                  size="small"
                   sx={{
                     mt: 2,
                     backgroundColor: captured ? 'green' : 'red',
@@ -75,7 +69,7 @@ export default function PokemonItem(props: PokemonItemProps) {
                     },
                   }}
             >
-                 {captured ? 'Captured' : 'Not Captured'}
+                 <Typography textTransform='none' >{captured ? 'Captured' : 'Not Captured'}</Typography>
              </Button>
    
 
@@ -88,7 +82,7 @@ export default function PokemonItem(props: PokemonItemProps) {
         
         <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
             <Button size="small" onClick={onShowMore}>           
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                <Typography sx={{ fontSize: 14}}  textTransform='none' color="text.secondary" gutterBottom>
                   See more
                 </Typography>
             </Button>

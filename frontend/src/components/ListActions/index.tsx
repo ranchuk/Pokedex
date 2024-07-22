@@ -7,14 +7,16 @@ import PageSizer from './PageSizer';
 
 interface ListActionsProps {
   onSort: (order: SortOrder) => void;
-  onFilter: (filter: string) => void;
+  onFilter: (filter: string[]) => void;
+  filterByType: string[],
   onSearch: (searchValue: string) => void;
+  searchValue: string;
   sortValue: SortOrder;
   onPageSizeChange: (size: number) => void;
   pageSize: number;
 }
 
-const ListActions = ({ onSort, onFilter, onSearch, sortValue, onPageSizeChange, pageSize }: ListActionsProps) => {
+const ListActions = ({ onSort, onFilter, onSearch, sortValue, onPageSizeChange, pageSize, filterByType, searchValue }: ListActionsProps) => {
   const theme = useTheme();
 
   return (
@@ -35,17 +37,13 @@ const ListActions = ({ onSort, onFilter, onSearch, sortValue, onPageSizeChange, 
       }}
     >
 
-      {/* <Typography>Filter and Sort</Typography> */}
-
           <Box display='flex' gap={4}>
             <PageSizer pageSize={pageSize} onPageSizeChange={onPageSizeChange}/>
 
-            {/* Sort Options */}
             <SortControls sortValue={sortValue} onSort={onSort}/>
-            </Box>
+          </Box>
       
-      {/* Filter Controls */}
-      <FilterControls onFilter={onFilter} onSearch={onSearch}/>
+          <FilterControls onFilter={onFilter} onSearch={onSearch} filterByType={filterByType} searchValue={searchValue}/>
     </Box>
   );
 };

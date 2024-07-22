@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Box, TextField, Button, Chip } from '@mui/material';
 
 interface FilterControls {
-    onFilter: (filter: string) => void;
+    onFilter: (filter: string[]) => void;
     onSearch: (searchValue: string) => void
+    filterByType: string[]
+    searchValue: string;
 }
 
-const FilterControls = ({ onFilter, onSearch } : FilterControls) => {
+const FilterControls = ({ onFilter, onSearch, filterByType, searchValue: searchValueProp } : FilterControls) => {
   const [filter, setFilter] = useState('');
-  const [filtersList, setFiltersList] = useState<string[]>([]);
+  const [filtersList, setFiltersList] = useState<string[]>(filterByType);
 
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState(searchValueProp);
 
 
   const handleAddFilter = () => {
@@ -28,7 +30,7 @@ const FilterControls = ({ onFilter, onSearch } : FilterControls) => {
 
 
   useEffect(() => {
-    onFilter(filtersList.join(','))
+    onFilter(filtersList)
   }, [filtersList])
 
 

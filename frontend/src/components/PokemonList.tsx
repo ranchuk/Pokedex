@@ -2,16 +2,20 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import PokemonItem from './PokemonItem';
 import Loader from '../common-components/Loader';
+import { Box } from '@mui/material';
+import { Pokemon } from '../types';
 
 interface PokemonListProps {
-  items: any[];
+  items: Pokemon[];
   isLoading: boolean;
   handleCapture: (pokemon_name: string) => void
-  handleShowMore: (pokemonData: any) => void
+  handleShowMore: (pokemonData: Pokemon) => void
 }
 
 const PokemonList = ({ items, isLoading, handleCapture, handleShowMore }: PokemonListProps) => {
   return (
+    <Box overflow="auto">
+
     <Loader loading={isLoading}>
       <Grid container spacing={2} pr='100px' pl="100px">
         {items.map((item) => (
@@ -21,6 +25,7 @@ const PokemonList = ({ items, isLoading, handleCapture, handleShowMore }: Pokemo
         ))}
       </Grid>
     </Loader>
+    </Box>
   );
 };
 
