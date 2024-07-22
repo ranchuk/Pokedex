@@ -1,0 +1,21 @@
+{
+  "name": "guardio-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && pip install -r requirements.txt",
+    "install": "npm run install:frontend && npm run install:backend",
+    "start:frontend": "cd frontend && npm start",
+    "start:backend": "cd backend && python app.py",
+    "concurrently": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start": "npm run install:frontend && npm run install:backend && npm run concurrently"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
