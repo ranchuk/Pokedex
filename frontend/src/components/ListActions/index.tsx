@@ -20,11 +20,12 @@ const ListActions = ({ onSort, onFilter, onSearch, sortValue, onPageSizeChange, 
   return (
     <Box
       display="flex"
-      flexDirection="row"
+      flexDirection="column"
       alignItems="center"
       justifyContent='space-evenly'
       color='black'
       margin={2}
+      gap={10}
       sx={{
         backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)',
         borderRadius: '8px',
@@ -34,10 +35,14 @@ const ListActions = ({ onSort, onFilter, onSearch, sortValue, onPageSizeChange, 
       }}
     >
 
+      {/* <Typography>Filter and Sort</Typography> */}
+
+          <Box display='flex' gap={4}>
             <PageSizer pageSize={pageSize} onPageSizeChange={onPageSizeChange}/>
 
             {/* Sort Options */}
             <SortControls sortValue={sortValue} onSort={onSort}/>
+            </Box>
       
       {/* Filter Controls */}
       <FilterControls onFilter={onFilter} onSearch={onSearch}/>

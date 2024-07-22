@@ -130,7 +130,7 @@ const App = () => {
                     </Box>
                 </Header>
 
-                <Drawer anchor="left" open={isFilterDrawerOpen} onClose={toggleDrawer(false)}>
+                <Drawer anchor="right" open={isFilterDrawerOpen} onClose={toggleDrawer(false)}>
                     <Box p={2}>
                       <ListActions
                                 onPageSizeChange={handlePageSize}
